@@ -1,3 +1,7 @@
+import sys
+
+sys.path.append('../BlackWallGroupTask')
+
 from db_connection import PostgresConnection
 from connection_params import CONNECTION_PARAMS, CLIENT_TABLE, QUEUE_TABLE
 
@@ -5,9 +9,9 @@ from connection_params import CONNECTION_PARAMS, CLIENT_TABLE, QUEUE_TABLE
 connection = PostgresConnection(CONNECTION_PARAMS)
 
 connection.run_cmd(
-    'CREATE TABLE %s (ClientId int, Balance int);' % (CLIENT_TABLE)
-    
+    'CREATE TABLE %s (client_id int, balance int);' % (CLIENT_TABLE)
 )
 connection.run_cmd(
-    'CREATE TABLE %s (SenderId int, ReceiverId int, Balance int);' % (QUEUE_TABLE)
+    'CREATE TABLE %s (sender_id int, receiver_id int, balance int);' % 
+    (QUEUE_TABLE)
 )

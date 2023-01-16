@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List
 
 import psycopg2 as psql
 
@@ -10,7 +10,8 @@ class DBConnectionParameters():
     host: str
     port: str
 
-    def __init__(self, dbname, user, password, host, port):
+    def __init__(self, dbname: str, user: str, password: str, 
+    host: str, port: str):
         self.dbname = dbname
         self.user = user
         self.password = password
@@ -22,7 +23,7 @@ class PostgresConnection():
     def __init__(self, connection_params: DBConnectionParameters):
         self.__connection_params = connection_params
 
-    def run_cmd(self, cmd: str) -> Optional[str]:
+    def run_cmd(self, cmd: str) -> List:
         conn = psql.connect(dbname=self.__connection_params.dbname,
                             user=self.__connection_params.user,
                             password=self.__connection_params.password,
@@ -38,10 +39,7 @@ class PostgresConnection():
             records = []
 
         cursor.close()
+        conn.commit()
         conn.close()
 
-        if len(records) == 0:
-            return None
-        if len(records) > 1:
-            raise Exception('Too many objects')
-        return records[0][0]
+        return records

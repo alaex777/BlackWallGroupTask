@@ -1,3 +1,7 @@
+import sys
+
+sys.path.append('../BlackWallGroupTask')
+
 from db_connection import PostgresConnection
 from connection_params import CONNECTION_PARAMS, CLIENT_TABLE
 
