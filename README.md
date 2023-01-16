@@ -11,4 +11,4 @@
 ### Run app
 uvicorn main:app --reload
 ### Use app
-Get request on localhost:8000/transfer/<sender_id>/<receiver_id>/<amount>
+Get request on ```localhost:8000/transfer/<sender_id>/<receiver_id>/<amount>```
