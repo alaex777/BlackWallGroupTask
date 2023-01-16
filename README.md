@@ -9,5 +9,6 @@
 6. python3 db_utils/create_tables.py
 7. python3 db_utils/fill_clients.py
 ### Run app
-1. uvicorn main:app --reload
-2. make request on localhost:8000/transfer/<sender_id>/<receiver_id>/<amount>
+uvicorn main:app --reload
+### Use app
+make get request on localhost:8000/transfer/<sender_id>/<receiver_id>/<amount>
